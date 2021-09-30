@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const jwt =require('jsonwebtoken');
 const jwtsecret="satyamtomar";
 
 //Creating a user using: POST "/api/auth/createuser".Doesn't require Login
@@ -30,7 +31,13 @@ router.post('/createuser',[body('email','Enter a valid mail').isEmail(),body('na
     //   .then(user => res.json(user))
     //   .catch(err=>{console.log(err)
     // res.json({error:'Please enter a unique value for email'})
-       res.json(user)
+      const data={
+        user:{
+          id:user.id
+        }
+      }
+    const authtoken=jwt.sign(data,jwtsecret);
+    res.json({authtoken});
     }
     catch(error)
     {
