@@ -42,11 +42,43 @@ router.post('/createuser',[body('email','Enter a valid mail').isEmail(),body('na
     catch(error)
     {
       console.error(error.message);
-      res.status(500).send("An Error occured");
+      res.status(500).send("Internal server error");
     }
      });
     
+    
+  //authenticate a user.POST "/api/auth/login".No login required
+ 
+  router.post('/login',[body('email','Enter a valid mail').isEmail(),body('password','Password cannot be blank').exists()], async (req,res)=>{
+    const errors = validationResult(req);
+    //if there are errors, returns bad request
+    if (!errors.isEmpty()) 
+    {
+      return res.status(400).json({ errors: errors.array() });
+    }
+   
+    const{email,password}=req.body;
+     try{
+       let user =await User.findOne({email});
+       if(!user)
+       return res.status(400).json({error:"Please try to login with valid credentials"});
+       const passwordcompare =await bcrypt.compare(password,user.password);
+       if(!passwordcompare)
+       return res.status(400).json({error:"Please try to login with valid credentials"});
 
-
+       const data={
+         user:{
+           id:user.id
+         }
+       }
+       const authtoken=jwt.sign(data,jwtsecret);
+    res.json({authtoken});
+       
+     }catch(error){
+        console.error(error.message);
+        res.status(500).send("Internal server error");
+     }
+  
+  })
 
 module.exports=router;
