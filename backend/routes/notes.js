@@ -52,6 +52,15 @@ if(tag){newNote.tag=tag};
 //Find the note to be updated and update it
 const note=Note.findById(req.params.id);
 if(!note){res.status(404).send("Not Found")}
+
+if(note.findByIdAndUpdate.toString() !== req.user.id){
+  return res.status(401).send("Not Allowed");
+}
+
+note=await Note.findByIdAndUpdate(req.params.id,{$set: newNote},{new:true})
+res.json(note)
+
+
 })
 
 
