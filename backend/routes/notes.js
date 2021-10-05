@@ -5,7 +5,7 @@ const Note=require('../models/notes');
 const { body, validationResult } = require('express-validator');
 
 
-//route1
+//route1   localhost:5000/api/notes/fetchallnotes
 router.get('/fetchallnotes',fetchuser,[body('title','Enter a valid title').isLength({min:3}),body('description','Enter a valid description').isLength({min:2})],async (req,res)=>{
 
     const notes=await Note.find({user:req.user.id});
@@ -13,7 +13,7 @@ router.get('/fetchallnotes',fetchuser,[body('title','Enter a valid title').isLen
 })
 
 
-//route2
+//route2 localhost:5000/api/notes/addnotes
 router.get('/addnotes',fetchuser,[body('title','Enter a valid title').isLength({min:3}),body('description','Enter a valid description').isLength({min:2})],async (req,res)=>{
   try{
     const {title,description,tag}=req.body;
@@ -37,8 +37,8 @@ router.get('/addnotes',fetchuser,[body('title','Enter a valid title').isLength({
   }
 })
 
-//route3
-router.get('/updatenote/:id',fetchuser,async (req,res)=>{
+//route3  localhost:5000/api/notes/updatenote:id
+router.put('/updatenote/:id',fetchuser,async (req,res)=>{
 
 const {title,description,tag}=req.body;
 
@@ -50,15 +50,15 @@ if(description){newNote.description=description};
 if(tag){newNote.tag=tag};
 
 //Find the note to be updated and update it
-const note=Note.findById(req.params.id);
+let note=await Note.findById(req.params.id);
 if(!note){res.status(404).send("Not Found")}
 
-if(note.findByIdAndUpdate.toString() !== req.user.id){
+if(note.user.toString() !== req.user.id){
   return res.status(401).send("Not Allowed");
 }
 
 note=await Note.findByIdAndUpdate(req.params.id,{$set: newNote},{new:true})
-res.json(note)
+res.json({note})
 
 
 })
