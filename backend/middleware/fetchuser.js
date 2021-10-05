@@ -7,14 +7,18 @@ const jwtsecret="satyamtomar";
 const fetchuser=(req,res,next)=>{
     //get user id from jwt token and add id to req object
   const token=req.header('auth-token');
-  if(!token){
+  if(!token)
+  {
       res.status(401).send({error:"Please authenticate using valid token"})
   }
   try{
     const data=jwt.verify(token,jwtsecret);
     req.user=data.user;
     next();
-  }catch(error){
+  }
+  catch(error)
+  {
+
     res.status(401).send({error:"Please authenticate using valid token"});
   
   }
