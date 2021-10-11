@@ -11,7 +11,8 @@
   .aboutSectionGradient {
     background-image: linear-gradient(
       to bottom right,
-      rgb(78, 81, 255),
+      black,
+      
       rgb(74, 137, 189)
     );
   }
@@ -33,7 +34,7 @@
   
   .aboutSectionContainer > h1 {
     font: 400 3vmax "Roboto";
-    color: tomato;
+    color: black;
     margin: 2vmax;
   }
   
@@ -62,7 +63,7 @@
   
   .aboutSectionContainer > div > div > span {
     font: 100 1vmax "Roboto";
-    color: rgba(0, 0, 0, 0.616);
+    color: #0000009d;
     text-align: center;
     width: 80%;
   }
@@ -82,7 +83,7 @@
   }
   
   .youtubeSvgIcon {
-    color: tomato;
+    color:black;
   }
   
   .instagramSvgIcon {
