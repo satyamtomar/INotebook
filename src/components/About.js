@@ -28,21 +28,23 @@ const About = () => {
               Visit me
             </Button>
             <span>
-INotebook website lets you have your notes saved on the cloud.  </span>
-<span>
-You can write your own notes, save it on cloud server and fetch all your notes anytime.  </span>
+              INotebook website lets you have your notes saved on the cloud.{" "}
+            </span>
+            <span>
+              You can write your own notes, save it on cloud server and fetch
+              all your notes anytime.{" "}
+            </span>
           </div>
           <div className="aboutSectionContainer2">
-
             <Typography component="h2">My Social Media</Typography>
-            <a
-              href="https://github.com/satyamtomar"
-              target="blank"
-            >
+            <a href="https://github.com/satyamtomar" target="blank">
               <GitHubIcon className="youtubeSvgIcon" />
             </a>
 
-            <a href="https://www.linkedin.com/in/satyam-tomar-0873a91b0/" target="blank">
+            <a
+              href="https://www.linkedin.com/in/satyam-tomar-0873a91b0/"
+              target="blank"
+            >
               <LinkedInIcon className="instagramSvgIcon" />
             </a>
           </div>
