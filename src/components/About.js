@@ -28,9 +28,12 @@ const About = () => {
               Visit me
             </Button>
             <span>
-your own cloud notebook...write your notes and save it on cloud server  </span>
+INotebook website lets you have your notes saved on the cloud.  </span>
+<span>
+You can write your own notes, save it on cloud server and fetch all your notes anytime.  </span>
           </div>
           <div className="aboutSectionContainer2">
+
             <Typography component="h2">My Social Media</Typography>
             <a
               href="https://github.com/satyamtomar"
