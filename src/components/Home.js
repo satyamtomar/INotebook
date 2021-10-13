@@ -40,7 +40,7 @@ const Home = () => {
               Check me out
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-dark">
             Submit
           </button>
         </form>
