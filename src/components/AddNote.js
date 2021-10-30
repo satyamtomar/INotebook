@@ -48,7 +48,7 @@ addNote(note.title,note.description,note.tag);
           </div>
           
           <button type="submit" className="btn btn-dark" onClick={clickhandler}>
-            Submit
+            Add note
           </button>
         </form>
       </div>
