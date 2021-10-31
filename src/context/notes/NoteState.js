@@ -9,8 +9,10 @@ const NoteState = (props) => {
 
   
   const [notes,setNotes]=useState(notesinitial);
+  
+  
   //get all notes
-  const getallnotes =async ()=>{
+  const getallNotes =async ()=>{
    
     const response = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: 'GET', 
@@ -22,6 +24,7 @@ const NoteState = (props) => {
         });
     const json =await response.json();
     console.log(json)
+    setNotes(json);
    }
   
   //add a note
@@ -69,8 +72,8 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({title,description,tag})
         });
-     const jsonn= await response.json(); 
-    console.log(jsonn); 
+   //  const jsonn= await response.json(); 
+    //console.log(jsonn); 
     for(let index=0;index<notes.length;index++)
     {
       const element=notes[index];
@@ -86,7 +89,7 @@ const NoteState = (props) => {
   }
 
   return (
-    <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,getallnotes}}>
+    <NoteContext.Provider value={{notes,addNote,deleteNote,editNote,getallNotes}}>
       {props.children}
     </NoteContext.Provider>
   );

@@ -4,9 +4,9 @@ import NoteContext from  "../context/notes/NoteContext";
 import AddNote from './AddNote';
 const Notes = () => {
     const context = useContext(NoteContext)
-    const {notes,getallnotes}=context;
+    const {notes,getallNotes}=context;
     useEffect(()=>{
-        getallnotes()
+        getallNotes()
     },[])
     return (
         <>
