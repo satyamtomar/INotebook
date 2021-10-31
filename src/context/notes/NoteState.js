@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import NoteContext from "./NoteContext";
+
+
 const NoteState = (props) => {
   const host="http://localhost:5000"
-  const notesinitial=[
-   
-  ]
+  const notesinitial=[]
 
   
   const [notes,setNotes]=useState(notesinitial);
@@ -22,9 +22,9 @@ const NoteState = (props) => {
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
         });
-    const json =await response.json();
-    console.log(json)
-    setNotes(json);
+    const jsonnn =await response.json();
+  //  console.log(jsonnn)
+    setNotes(jsonnn);
    }
   
   //add a note
