@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useRef } from "react";
+import React, { useContext, useState,useEffect,useRef } from "react";
 import NoteItem from "./NoteItem";
 import NoteContext from "../context/notes/NoteContext";
 import AddNote from "./AddNote";
@@ -13,38 +13,99 @@ const Notes = () => {
 
   const ref=useRef(null)
 
-  const updatenote = (note) => {
+  const updatenote = (curnote) => {
       ref.current.click()
+      setNote({etitle:curnote.title,edescription:curnote.description,etag:curnote.tag})
   };
+  const [note ,setNote]=useState({ etitle:"",edescription:"",etag:"default"})
+   
+  const clickhandler = (e)=>{
+      console.log('updating note')
+    e.preventDefault(); 
+}
+  const onChange=(e)=>
+  {
+        setNote({...note,[e.target.name]:e.target.value})
+  }
 
   return (
     <>
       <AddNote />
 
-      <button ref={ref} type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
                 Edit Note
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div className="modal-body">
+            
+            
+            <form>
+          <div className="mb-3">
+            <label htmlFor="title" className="form-label">
+              Title
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="etitle"
+              aria-describedby="emailHelp"
+              name="etitle"
+              value={note.etitle}
+              onChange={onChange}
+            />
+            
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label" >
+              Description
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="edescription"
+              name="edescription"
+              onChange={onChange}
+              value={note.edescription}
+
+            />
+          </div>
+
+          <div className="mb-3">
+            <label htmlFor="tag" className="form-label">
+              Tag
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="etag"
+              name="etag"
+              onChange={onChange}
+              value={note.etag}
+            />
+          </div>
+
+        </form>
+
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -53,7 +114,7 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary">
+              <button onClick={clickhandler}type="button" class="btn btn-primary">
                 Update Note
               </button>
             </div>
@@ -68,6 +129,7 @@ const Notes = () => {
               <NoteItem key={note._id} updatenote={updatenote} note={note} />
             );
           })}
+          
       </div>
     </>
   );
