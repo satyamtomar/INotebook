@@ -19,7 +19,7 @@ router.get(
 );
 
 //route2 localhost:5000/api/notes/addnotes
-router.get(
+router.post(
   "/addnotes",
   fetchuser,
   [

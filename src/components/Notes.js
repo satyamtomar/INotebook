@@ -5,23 +5,24 @@ import AddNote from "./AddNote";
 import { EmojiFoodBeverageTwoTone } from "@material-ui/icons";
 const Notes = () => {
   const context = useContext(NoteContext);
-  const { notes, getallNotes } = context;
+  const { notes, getallNotes,editNote } = context;
   useEffect(() => {
     getallNotes();
     // eslint-disable-next-line
   }, []);
 
   const ref=useRef(null)
-
+const refclose=useRef(null)
+  
+  const [note ,setNote]=useState({ id:"",etitle:"",edescription:"",etag:"default"})
   const updatenote = (curnote) => {
-      ref.current.click()
-      setNote({etitle:curnote.title,edescription:curnote.description,etag:curnote.tag})
-  };
-  const [note ,setNote]=useState({ etitle:"",edescription:"",etag:"default"})
-   
+    ref.current.click()
+    setNote({id:curnote._id,etitle:curnote.title,edescription:curnote.description,etag:curnote.tag})
+}; 
   const clickhandler = (e)=>{
       console.log('updating note')
-    e.preventDefault(); 
+      editNote(note.id,note.etitle,note.edescription,note.etag);
+    refclose.current.click();
 }
   const onChange=(e)=>
   {
@@ -106,15 +107,16 @@ const Notes = () => {
         </form>
 
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
+                ref={refclose}
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
-              <button onClick={clickhandler}type="button" class="btn btn-primary">
+              <button onClick={clickhandler} type="button" className="btn btn-primary">
                 Update Note
               </button>
             </div>

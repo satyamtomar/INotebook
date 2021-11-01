@@ -4,10 +4,12 @@ import NoteContext from  "../context/notes/NoteContext";
 const AddNote = () => {
     const context = useContext(NoteContext)
     const {addNote}=context;
-    const [note ,setNote]=useState({ title:"",description:"",tag:"default"})
+    const [note ,setNote]=useState({ title:"",description:"",tag:""})
     const clickhandler = (e)=>{
-        e.preventDefault(); 
-addNote(note.title,note.description,note.tag);
+        
+      e.preventDefault();
+      addNote(note.title,note.description,note.tag);
+      setNote({title:"",description:"",tag:""})
     }
     const onChange=(e)=>
     {
