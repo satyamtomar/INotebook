@@ -32,6 +32,8 @@ const AddNote = () => {
               aria-describedby="emailHelp"
               name="title"
               onChange={onChange}
+              value={note.title}
+              minLength={5} required
             />
             
           </div>
@@ -45,7 +47,8 @@ const AddNote = () => {
               id="description"
               name="description"
               onChange={onChange}
-
+             value={note.description}
+              minLength={5} required
             />
           </div>
 
@@ -58,12 +61,13 @@ const AddNote = () => {
               className="form-control"
               id="tag"
               name="tag"
+              value={note.tag}
               onChange={onChange}
-
+               required
             />
           </div>
 
-          <button type="submit" className="btn btn-dark" onClick={clickhandler}>
+          <button disabled={note.title.length<5||note.description.length<5} type="submit" className="btn btn-dark" onClick={clickhandler}>
             Add note
           </button>
         </form>

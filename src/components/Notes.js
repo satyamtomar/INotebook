@@ -14,7 +14,7 @@ const Notes = () => {
   const ref=useRef(null)
 const refclose=useRef(null)
   
-  const [note ,setNote]=useState({ id:"",etitle:"",edescription:"",etag:"default"})
+  const [note ,setNote]=useState({ id:"",etitle:"",edescription:"",etag:""})
   const updatenote = (curnote) => {
     ref.current.click()
     setNote({id:curnote._id,etitle:curnote.title,edescription:curnote.description,etag:curnote.tag})
@@ -72,6 +72,8 @@ const refclose=useRef(null)
               name="etitle"
               value={note.etitle}
               onChange={onChange}
+              
+              minLength={5} required
             />
             
           </div>
@@ -86,7 +88,7 @@ const refclose=useRef(null)
               name="edescription"
               onChange={onChange}
               value={note.edescription}
-
+              minLength={5} required
             />
           </div>
 
@@ -101,6 +103,7 @@ const refclose=useRef(null)
               name="etag"
               onChange={onChange}
               value={note.etag}
+               required
             />
           </div>
 
@@ -116,7 +119,7 @@ const refclose=useRef(null)
               >
                 Close
               </button>
-              <button onClick={clickhandler} type="button" className="btn btn-primary">
+              <button disabled={note.etitle.length<5||note.edescription.length<5} onClick={clickhandler} type="button" className="btn btn-primary">
                 Update Note
               </button>
             </div>
@@ -125,8 +128,10 @@ const refclose=useRef(null)
       </div>
       <div className="row my-3">
         <h1>Your Notes</h1>
-        {notes.length > 0 &&
-          notes.map((note) => {
+        <div className="container">
+        {notes.length == 0 &&'No notes to display'}
+        </div>
+         { notes.map((note) => {
             return (
               <NoteItem key={note._id} updatenote={updatenote} note={note} />
             );
