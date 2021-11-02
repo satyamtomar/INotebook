@@ -2,7 +2,6 @@ import React, { useContext, useState,useEffect,useRef } from "react";
 import NoteItem from "./NoteItem";
 import NoteContext from "../context/notes/NoteContext";
 import AddNote from "./AddNote";
-import { EmojiFoodBeverageTwoTone } from "@material-ui/icons";
 const Notes = () => {
   const context = useContext(NoteContext);
   const { notes, getallNotes,editNote } = context;
@@ -129,7 +128,7 @@ const refclose=useRef(null)
       <div className="row my-3">
         <h1>Your Notes</h1>
         <div className="container">
-        {notes.length == 0 &&'No notes to display'}
+        {notes.length === 0 &&'No notes to display'}
         </div>
          { notes.map((note) => {
             return (

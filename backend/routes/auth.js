@@ -64,6 +64,7 @@ router.post(
     body("password", "Password cannot be blank").exists(),
   ],
   async (req, res) => {
+    let success=false;
     const errors = validationResult(req);
     //if there are errors, returns bad request
     if (!errors.isEmpty()) {
@@ -82,14 +83,15 @@ router.post(
         return res
           .status(400)
           .json({ error: "Please try to login with valid credentials" });
-
+      
       const data = {
         user: {
           id: user.id,
         },
       };
       const authtoken = jwt.sign(data, jwtsecret);
-      res.json({ authtoken });
+      success=true;
+      res.json({ success,authtoken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal server error");
