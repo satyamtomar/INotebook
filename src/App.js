@@ -24,7 +24,7 @@ function App() {
       <NoteState>
         <Router>
           <Navbar />
-          <Alert message="satyamtomar" />
+          <Alert alert={alert} />
           <div className="container">
             <Switch>
               <Route exact path="/about">

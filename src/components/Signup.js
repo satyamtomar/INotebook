@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom';
-const Signup = () => {
+const Signup = (props) => {
 
     const [credential, setcredential] = useState({name:"", email: "", password: "",cpassword: ""});
     let history = useHistory();
@@ -24,8 +24,10 @@ const Signup = () => {
         //save the auth token and redirect it
         localStorage.setItem("token", json.authtoken);
         history.push("/");
+        props.showAlert("Account successfully created","success");
+     
       } else {
-        alert("Invalid credential");
+        props.showAlert("Invalid details","danger");
       }
       
     };
@@ -53,7 +55,7 @@ const Signup = () => {
   
   <div className="mb-3">
     <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-    <input type="cpassword" className="form-control" onChange={onChange}  id="cpassword" name="cpassword" minLength={5} required  />
+    <input type="password" className="form-control" onChange={onChange}  id="cpassword" name="cpassword" minLength={5} required  />
   </div>
   <button type="submit" className="btn btn-dark">Submit</button>
 </form>

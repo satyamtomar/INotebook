@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect,useRef } from "react";
 import NoteItem from "./NoteItem";
 import NoteContext from "../context/notes/NoteContext";
 import AddNote from "./AddNote";
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(NoteContext);
   const { notes, getallNotes,editNote } = context;
   useEffect(() => {
@@ -17,11 +17,12 @@ const refclose=useRef(null)
   const updatenote = (curnote) => {
     ref.current.click()
     setNote({id:curnote._id,etitle:curnote.title,edescription:curnote.description,etag:curnote.tag})
-}; 
+  }; 
   const clickhandler = (e)=>{
       console.log('updating note')
       editNote(note.id,note.etitle,note.edescription,note.etag);
     refclose.current.click();
+    props.showAlert("updated successfully","success");
 }
   const onChange=(e)=>
   {
@@ -30,7 +31,7 @@ const refclose=useRef(null)
 
   return (
     <>
-      <AddNote />
+      <AddNote  showAlert={props.showAlert} />
 
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
@@ -132,7 +133,7 @@ const refclose=useRef(null)
         </div>
          { notes.map((note) => {
             return (
-              <NoteItem key={note._id} updatenote={updatenote} note={note} />
+              <NoteItem key={note._id} updatenote={updatenote} note={note} showAlert={props.showAlert} />
             );
           })}
           
