@@ -1,25 +1,22 @@
-import React,{useContext, useState} from 'react'
-import NoteContext from  "../context/notes/NoteContext";
+import React, { useContext, useState } from "react";
+import NoteContext from "../context/notes/NoteContext";
 
 const AddNote = (props) => {
-    const context = useContext(NoteContext)
-    const {addNote}=context;
-    const [note ,setNote]=useState({ title:"",description:"",tag:""})
-    const clickhandler = (e)=>{
-        
-      e.preventDefault();
-      addNote(note.title,note.description,note.tag);
-      setNote({title:"",description:"",tag:""})
-      props.showAlert("Added successfully","success");
-    }
-    const onChange=(e)=>
-    {
-          setNote({...note,[e.target.name]:e.target.value})
-    }
-    return (
-       
-        <div>
-            <div className="container my-3">
+  const context = useContext(NoteContext);
+  const { addNote } = context;
+  const [note, setNote] = useState({ title: "", description: "", tag: "" });
+  const clickhandler = (e) => {
+    e.preventDefault();
+    addNote(note.title, note.description, note.tag);
+    setNote({ title: "", description: "", tag: "" });
+    props.showAlert("Added successfully", "success");
+  };
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
+  return (
+    <div>
+      <div className="container my-3">
         <h1>Add a note</h1>
         <form>
           <div className="mb-3">
@@ -34,9 +31,9 @@ const AddNote = (props) => {
               name="title"
               onChange={onChange}
               value={note.title}
-              minLength={5} required
+              minLength={5}
+              required
             />
-            
           </div>
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
@@ -48,8 +45,9 @@ const AddNote = (props) => {
               id="description"
               name="description"
               onChange={onChange}
-             value={note.description}
-              minLength={5} required
+              value={note.description}
+              minLength={5}
+              required
             />
           </div>
 
@@ -64,18 +62,22 @@ const AddNote = (props) => {
               name="tag"
               value={note.tag}
               onChange={onChange}
-               required
+              required
             />
           </div>
 
-          <button disabled={note.title.length<5||note.description.length<5} type="submit" className="btn btn-dark" onClick={clickhandler}>
+          <button
+            disabled={note.title.length < 5 || note.description.length < 5}
+            type="submit"
+            className="btn btn-dark"
+            onClick={clickhandler}
+          >
             Add note
           </button>
         </form>
       </div>
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default AddNote
+export default AddNote;
