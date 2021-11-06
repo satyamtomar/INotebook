@@ -27,7 +27,8 @@ const Login = (props) => {
       history.push("/");
      
       
-    } else {
+    }
+     else {
       props.showAlert("Invalid credentials", "danger");
     }
   };
@@ -36,7 +37,8 @@ const Login = (props) => {
     setcredential({ ...credential, [e.target.name]: e.target.value });
   };
   return (
-    <div>
+    <div className="mt-3">
+    <h1>Login to your notes</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
