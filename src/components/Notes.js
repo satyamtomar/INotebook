@@ -8,7 +8,7 @@ const Notes = (props) => {
   let history = useHistory();
   const { notes, getallNotes, editNote } = context;
   useEffect(() => {
-    if (!localStorage.getItem("token")) getallNotes();
+    if (localStorage.getItem('token')) getallNotes();
     else {
       history.push("/login");
     }

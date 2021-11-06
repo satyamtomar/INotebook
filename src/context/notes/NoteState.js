@@ -14,7 +14,7 @@ const NoteState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        "auth-token": localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
     });
@@ -29,7 +29,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        "auth-token": localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({ title, description, tag }),
@@ -43,12 +43,12 @@ const NoteState = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        "auth-token": localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
     });
     const json = await response.json();
-    //     console.log(json)
+         console.log(json)
     //  //console.log("deleting the node"+id);
     const newNotes = notes.filter((note) => {
       return note._id !== id;
@@ -61,13 +61,13 @@ const NoteState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
+        "auth-token": localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({ title, description, tag }),
     });
-    //  const jsonn= await response.json();
-    //console.log(jsonn);
+      const jsonn= await response.json();
+    console.log(jsonn);
 
     let newnotess = JSON.parse(JSON.stringify(notes));
     for (let index = 0; index < newnotess.length; index++) {
