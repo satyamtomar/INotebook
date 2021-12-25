@@ -37,44 +37,47 @@ const Login = (props) => {
     setcredential({ ...credential, [e.target.name]: e.target.value });
   };
   return (
-    <div className="mt-3">
-    <h1>Login to your notes</h1>
+    <div className="flex flex-row md:pt-28 pt-10 mx-auto justify-center ">
+    <div className="border-2 border-gray-500 rounded-lg px-7 py-7 shadow-lg shadow-cyan-500/100 text-gray-200">
+     <div className="space-x-2 flex flex-row justify-center">
+    <h1 className="text-2xl pb-10">Login to your notes</h1>
+    </div>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
+        <div className="mb-3 space-x-2 flex flex-row justify-between">
+          <label htmlFor="email " >
             Email address
           </label>
           <input
             type="email"
-            className="form-control"
+            className="bg-gray-100 text-black"
             id="email"
             name="email"
             onChange={onChange}
             value={credential.email}
             aria-describedby="emailHelp"
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
+          
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
+        <div className="mb-3 space-x-2 flex flex-row justify-between">
+          <label htmlFor="password" >
             Password
           </label>
           <input
             type="password"
-            className="form-control"
             name="password"
             id="password"
             onChange={onChange}
             value={credential.password}
+            className="bg-gray-100 text-black"
           />
         </div>
-        <div className="mb-3 form-check"></div>
-        <button type="submit" className="btn btn-dark">
+        <div className="flex flex-row justify-center pt-8">
+        <button type="submit" className="bg-gray-800 rounded-lg px-2 py-2 shadow-md shadow-cyan-500/100">
           Submit
         </button>
+        </div>
       </form>
+      </div>
     </div>
   );
 };

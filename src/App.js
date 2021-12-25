@@ -25,7 +25,7 @@ function App() {
         <Router>
           <Navbar />
           <Alert alert={alert} />
-          <div className="container">
+          <div >
             <Switch>
               <Route exact path="/about">
                 <About />

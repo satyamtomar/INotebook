@@ -1,6 +1,6 @@
 import React from "react";
-
-import { Link, useLocation } from "react-router-dom";
+import "./nav.css";
+import { Link } from "react-router-dom";
 import {useHistory} from "react-router-dom";
 const Navbar = () => {
   let history=useHistory();
@@ -8,64 +8,51 @@ const Navbar = () => {
     localStorage.removeItem('token')
     history.push('/login')
   }
-  let location = useLocation();
- 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            INotebook
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location.pathname === "/" ? "active" : ""
-                  }`}
-                  aria-current="page"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location.pathname === "/about" ? "active" : ""
-                  }`}
-                  to="/about"
-                >
-                  About
-                </Link>
-              </li>
-            </ul>
-          {!localStorage.getItem('token')? 
-           <form className="d-flex">
-              <Link className="btn btn-dark mx-1" to="/login" role="button">
-                Login
-              </Link>
-              <Link className="btn btn-dark mx-1" to="/signup" role="button">
-                Signup
-              </Link>
-            </form>
-            : <button onClick={logoutfun} className="btn btn-dark">Logout</button>}
+    
+          <div>
+      <nav className="bg-gray-800 text-gray-200">
+        <div className="md:px-16 px-2 py-2 max-w-full mx-auto flex justify-between  md:text-xl md:text-lg items-center space-x-2">
+          <div className="md:space-x-12 space-x-2 flex justify-between items-center ">
+            <div className="items-center ">
+              <svg viewBox="0 0 960 200" className="h-full w-full items-center">
+                <symbol id="s-text">
+                  <text text-anchor="middle" x="30%" y="60%" className="text-8xl">
+                  <Link className="hover:text-gray-600 " to="/">webnotes</Link>
+                  
+                  </text>
+                </symbol>
+                <g className = "g-ants">
+		<use href="#s-text" class="text-copy"></use>
+		<use href="#s-text" class="text-copy"></use>
+		<use href="#s-text" class="text-copy"></use>
+		<use href="#s-text" class="text-copy"></use>
+		<use href="#s-text" class="text-copy"></use>
+	</g>
+              </svg>
+            </div>
+            
+          </div>
+          <div>
+          <div className="space-x-3 items-center flex flex-row ">
+              <Link className="hover:text-gray-600 font-bold" to="/">Home</Link>
+              <Link className="hover:text-gray-600 font-bold" to="/about">About</Link>
+
+              {!localStorage.getItem('token')? 
+              <div className="flex flex-row space-x-3">
+              <Link className="hover:text-gray-600 font-bold" to="/login">Login</Link>
+              <Link className="hover:text-gray-600 font-bold" to="/signup">Signup</Link>
+              </div>
+              :
+              <button onClick={logoutfun} className="hover:text-gray-600 font-bold">Logout</button>}
+            </div>
+            
+            
           </div>
         </div>
       </nav>
-    </>
+    </div>
+    
   );
 };
 
