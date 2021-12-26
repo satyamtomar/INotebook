@@ -83,7 +83,7 @@ const Signup = (props) => {
             onChange={onChange}
             id="password"
             name="password"
-            minLength={1}
+            
             required
           />
         </div>
@@ -99,7 +99,7 @@ const Signup = (props) => {
             id="cpassword"
             name="cpassword"
             className="text-black"
-            minLength={1}
+            
 
             required
           />

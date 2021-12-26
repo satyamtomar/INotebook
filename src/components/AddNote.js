@@ -82,7 +82,6 @@ const AddNote = (props) => {
           </div>
           <div className="flex flex-row justify-center pt-4">
           <button
-            disabled={note.title.length < 5 || note.description.length < 5}
             type="submit"
             className="btn btn-dark text-gray-200 shadow-md shadow-cyan-500"
             onClick={clickhandler}
