@@ -37,7 +37,7 @@ const AddNote = (props) => {
               name="title"
               onChange={onChange}
               value={note.title}
-              minLength={5}
+              minLength={1}
               required
             />
             </div>
@@ -56,7 +56,7 @@ const AddNote = (props) => {
               name="description"
               onChange={onChange}
               value={note.description}
-              minLength={5}
+              minLength={1}
               required
             />
             </div>
