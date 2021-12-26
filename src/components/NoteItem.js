@@ -9,7 +9,7 @@ const NoteItem = (props) => {
   return (
     <div className="">
       
-        <div className="border-2 border-gray-200 shadow-md shadow-cyan-500/100">
+        <div className="border-4 border-gray-200 shadow-md shadow-cyan-500/100">
         <div className="flex flex-row justify-center px-2">
           <h5 className="text-gray-200 font-bold truncate">{note.title}</h5>
           </div>

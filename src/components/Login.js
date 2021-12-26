@@ -38,7 +38,7 @@ const Login = (props) => {
   };
   return (
     <div className="flex flex-row md:pt-28 pt-10 mx-auto justify-center ">
-    <div className="border-2 border-gray-500 rounded-lg px-7 py-7 shadow-md shadow-cyan-500/100 text-gray-200">
+    <div className="border-3 border-gray-200 rounded-lg px-7 py-7 shadow-md shadow-cyan-500/100 text-gray-200">
      <div className="space-x-2 flex flex-row justify-center">
     <h1 className="text-2xl pb-10">Login to your notes</h1>
     </div>
