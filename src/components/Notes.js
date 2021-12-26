@@ -158,15 +158,17 @@ const Notes = (props) => {
         <div className="">
           {notes.length === 0 && "No notes to display"}
         </div>
-        <div className="flex flex-row px-3 space-x-4">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 space-x-4">
         {notes.map((note) => {
           return (
+            <div className="py-2 px-2">
             <NoteItem
               key={note._id}
               updatenote={updatenote}
               note={note}
               showAlert={props.showAlert}
             />
+            </div>
           );
         })}
         </div>

@@ -84,7 +84,7 @@ const AddNote = (props) => {
           <button
             disabled={note.title.length < 5 || note.description.length < 5}
             type="submit"
-            className="btn btn-dark text-gray-200"
+            className="btn btn-dark text-gray-200 shadow-md shadow-cyan-500"
             onClick={clickhandler}
           >
             Add note
