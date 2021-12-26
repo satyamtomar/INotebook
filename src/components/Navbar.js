@@ -39,10 +39,10 @@ const Navbar = () => {
               <Link className="hover:text-gray-600 font-bold" to="/about">About</Link>
 
               {!localStorage.getItem('token')? 
-              <div className="flex flex-row space-x-3">
+              <form className="flex flex-row space-x-3">
               <Link className="hover:text-gray-600 font-bold" to="/login">Login</Link>
               <Link className="hover:text-gray-600 font-bold" to="/signup">Signup</Link>
-              </div>
+              </form>
               :
               <button onClick={logoutfun} className="hover:text-gray-600 font-bold">Logout</button>}
             </div>
