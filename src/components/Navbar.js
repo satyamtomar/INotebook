@@ -44,7 +44,7 @@ const Navbar = () => {
               <Link className="hover:text-gray-600 font-bold" to="/signup" role="button">Signup</Link>
               </form>
               :
-              <button onClick={logoutfun} className="hover:text-gray-600 font-bold">Logout</button>}
+              <button type="click" onClick={logoutfun} className="hover:text-gray-600 font-bold">Logout</button>}
             </div>
             
             
