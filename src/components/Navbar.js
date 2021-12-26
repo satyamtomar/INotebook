@@ -2,11 +2,16 @@ import React from "react";
 import "./nav.css";
 import { Link } from "react-router-dom";
 import {useHistory} from "react-router-dom";
+
 const Navbar = () => {
   let history=useHistory();
-  const logoutfun =()=>{
-    localStorage.removeItem('token')
+  const logoutfun = ()=>{
+    localStorage.clear()
+    console.log(localStorage.getItem('token'));
+  setTimeout(() => {
     history.push('/login')
+  },1000)  
+    
   }
   return (
     
@@ -30,22 +35,26 @@ const Navbar = () => {
 		<use href="#s-text" class="text-copy"></use>
 	</g>
               </svg>
+              
             </div>
             
           </div>
           <div>
           <div className="space-x-3 items-center flex flex-row ">
+            
               <Link className="hover:text-gray-600 font-bold" to="/">Home</Link>
               <Link className="hover:text-gray-600 font-bold" to="/about">About</Link>
-
-              {!localStorage.getItem('token')? 
-              <form className="flex flex-row space-x-3">
+              
+              {localStorage.getItem('token')===null  ? 
+              <div className="flex flex-row space-x-3">
               <Link className="hover:text-gray-600 font-bold" to="/login" role="button">Login</Link>
               <Link className="hover:text-gray-600 font-bold" to="/signup" role="button">Signup</Link>
-              </form>
+              </div>
               :
-              <button type="click" onClick={logoutfun} className="hover:text-gray-600 font-bold">Logout</button>}
-            </div>
+              <button onClick={logoutfun}  className="hover:text-gray-600 font-bold">Logout</button>
+              
+              }
+              </div>
             
             
           </div>
