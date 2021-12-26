@@ -131,7 +131,7 @@ const Notes = (props) => {
               <button
                 ref={refclose}
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-secondary text-black"
                 data-bs-dismiss="modal"
               >
                 Close
@@ -142,7 +142,7 @@ const Notes = (props) => {
                 }
                 onClick={clickhandler}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-primary text-black"
               >
                 Update Note
               </button>
@@ -150,11 +150,15 @@ const Notes = (props) => {
           </div>
         </div>
       </div>
-      <div className="row my-3">
-        <h1>Your Notes</h1>
-        <div className="container">
+      <div className="block my-3">
+      <div>
+        <h1 className="text-4xl text-gray-200 pb-3">Your Notes</h1>
+        </div>
+        
+        <div className="">
           {notes.length === 0 && "No notes to display"}
         </div>
+        <div className="flex flex-row px-3 space-x-4">
         {notes.map((note) => {
           return (
             <NoteItem
@@ -165,6 +169,7 @@ const Notes = (props) => {
             />
           );
         })}
+        </div>
       </div>
     </>
   );
