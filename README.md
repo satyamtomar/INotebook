@@ -3,7 +3,7 @@
  
  link:
  
-  https://inoteboook.netlify.app
+  https://webnotess.netlify.app
  
 
 preview:
