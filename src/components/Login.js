@@ -6,7 +6,7 @@ const Login = (props) => {
   let history = useHistory();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://inotebooksatyam.herokuapp.com/api/auth/login", {
+    const response = await fetch("https://webnotesbackend.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
