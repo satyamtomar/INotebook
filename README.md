@@ -2,8 +2,7 @@
  your own cloud notebook...write your notes and save it on cloud server 
  
  link:
- 
-  https://webnotess.netlify.app
+ https://webnotessatyam.netlify.app/login
  
 
 preview:
